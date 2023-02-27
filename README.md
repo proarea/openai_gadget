@@ -10,12 +10,16 @@
 </div>
 <br />
 Explore the potential of OpenAI models with our repository of examples showcasing use cases. Our examples highlight the diverse ways in which OpenAI models can be applied. Discover the limitations and benefits of these models and how they can be used to solve real-world problems.    
+
 <br />
+
 Project uses:  
 - <a href="https://pub.dev/packages/envied">`envied`</a> for local secrets management.  
 - <a href="https://pub.dev/packages/get_it">`get_it`</a> for dependency management.  
-- <a href="https://pub.dev/packages/openai_client">`openai_client`</a> for <a href="https://openai.com/api/">OpenAI API</a> (<a href="https://platform.openai.com/docs">doc</a>) interactions.  
+- <a href="https://pub.dev/packages/openai_client">`openai_client`</a> for <a href="https://openai.com/api/">OpenAI API</a> (<a href="https://platform.openai.com/docs">doc</a>) interactions. 
+
 <br />
+
 Demo:  
 <img src="images/demo.gif" />
 
