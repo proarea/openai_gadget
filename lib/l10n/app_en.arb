@@ -1,0 +1,6 @@
+{
+    "appName": "OpenAI Gadget",
+    "labelGoToSimpleChat": "Open Simple Chat",
+    "labelTextModelName": "Text Model Name",
+    "labelClearChatHistory": "Clear Chat History"
+}
