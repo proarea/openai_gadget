@@ -7,6 +7,7 @@ class SettingsBloc extends Cubit<AppSettings> {
   SettingsBloc() : super(const AppSettings.defaults());
 
   void setModel(OpenAiTextModel textModel) {
+    if (isClosed) return;
     emit(state.copyWith(textModel: textModel));
   }
 }

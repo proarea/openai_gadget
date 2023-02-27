@@ -12,14 +12,17 @@ class ChatBloc extends Cubit<List<ChatMessage>> {
   }) : super([]);
 
   void clearChat() {
+    if (isClosed) return;
     emit([]);
   }
 
   void postMessage(OpenAiTextModel textModel, String prompt) async {
     final userMessage = ChatMessage.my(content: prompt);
+    if (isClosed) return;
     emit([userMessage, ...state]);
 
     final response = await _respond(textModel, prompt);
+    if (isClosed) return;
     emit([response, ...state]);
   }
 

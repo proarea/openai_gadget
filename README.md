@@ -1,7 +1,9 @@
 <img src="images/banner.png" />
-<img src="https://img.shields.io/static/v1?label=built%20with&message=flutter&color=blue&logo=flutter" /> 
-<img src="https://img.shields.io/static/v1?label=built%20with&message=dart&color=blue&logo=dart" />
-<img src="https://img.shields.io/static/v1?label=built%20using&message=openai&color=white&logo=openai" />
+<div align="center">
+    <img src="https://img.shields.io/static/v1?label=built%20with&message=flutter&color=blue&logo=flutter" /> 
+    <img src="https://img.shields.io/static/v1?label=built%20with&message=dart&color=blue&logo=dart" />
+    <img src="https://img.shields.io/static/v1?label=built%20using&message=openai&color=white&logo=openai" />
+</div>
 
 ## OpenAI Gadget
 Explore the potential of OpenAI models with our repository of examples showcasing use cases. Our examples highlight the diverse ways in which OpenAI models can be applied. Discover the limitations and benefits of these models and how they can be used to solve real-world problems.    
@@ -10,6 +12,9 @@ Project uses:
 - <a href="https://pub.dev/packages/envied">`envied`</a> for local secrets management.
 - <a href="https://pub.dev/packages/get_it">`get_it`</a> for dependency management.
 - <a href="https://pub.dev/packages/openai_client">`openai_client`</a> for OpenAI API interactions.
+
+Demo:
+<img src="images/demo.gif" />
 
 ## Getting Started
 

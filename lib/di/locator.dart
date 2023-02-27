@@ -23,7 +23,7 @@ Future<void> injectDependencies() async {
     ),
   );
 
-  locator.registerLazySingleton(
+  locator.registerFactory(
     () => ChatBloc(
       openAiService: locator<OpenAiService>(),
     ),
