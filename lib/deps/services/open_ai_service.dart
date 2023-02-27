@@ -18,6 +18,7 @@ class OpenAiService {
     final request = openAiClient.completions.create(
       model: textModel.modelName,
       prompt: prompt,
+      maxTokens: 1000,
     );
     final response = await request.go();
     final choices = response.data?.choices ?? [];
