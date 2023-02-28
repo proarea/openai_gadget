@@ -8,9 +8,8 @@ import '../di/locator.dart';
 import '../l10n/l10n.dart';
 import '../models/chat_message.dart';
 import '../widgets/constrained_area.dart';
+import '../widgets/default_app_bar.dart';
 import '../widgets/message_tile.dart';
-import '../widgets/open_ai_text_model_selector.dart';
-import '../widgets/settings_option.dart';
 
 class ChatPage extends StatefulWidget {
   static PageRoute createRoute() {
@@ -69,15 +68,21 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('OpenAI Completion Demo'),
+      appBar: DefaultAppBar(
+        title: context.localizations.labelSimpleChat,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.delete_forever),
+            tooltip: context.localizations.tooltipClearChat,
+            onPressed: () => _bloc.clearChat(),
+          ),
+        ],
       ),
       body: ConstrainedArea(
         child: Column(
           children: [
-            _buildSettingsRow(),
             Expanded(
-              child: _buildMessagesRow(),
+              child: _buildMessages(),
             ),
             _buildInputRow(),
           ],
@@ -86,51 +91,18 @@ class _ChatPageState extends State<ChatPage> {
     );
   }
 
-  Widget _buildSettingsRow() {
-    return Row(
-      children: [
-        Expanded(
-          child: Wrap(
-            spacing: 8,
-            runSpacing: 8,
-            runAlignment: WrapAlignment.start,
-            alignment: WrapAlignment.start,
-            crossAxisAlignment: WrapCrossAlignment.center,
-            children: [
-              SettingsOption(
-                label: context.localizations.labelTextModelName,
-                child: OpenAiTextModelSelector(
-                  onChanged: () {
-                    FocusScope.of(context).requestFocus(_inputFieldFocusNode);
-                  },
-                ),
-              ),
-              SettingsOption(
-                label: context.localizations.labelClearChatHistory,
-                child: IconButton(
-                  icon: const Icon(Icons.delete_forever),
-                  onPressed: () => _bloc.clearChat(),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildMessagesRow() {
+  Widget _buildMessages() {
     return BlocBuilder<ChatBloc, List<ChatMessage>>(
       bloc: _bloc,
       builder: (context, messages) {
         if (messages.isEmpty) {
-          return const Center(
-            child: Text('Type in whatever you would like to ask'),
+          return Center(
+            child: Text(context.localizations.labelEmptyChat),
           );
         }
 
         return ListView.builder(
-          padding: const EdgeInsets.all(4),
+          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 32),
           reverse: true,
           itemCount: messages.length,
           itemBuilder: (_, index) {
@@ -147,32 +119,46 @@ class _ChatPageState extends State<ChatPage> {
       builder: (context, messages) {
         final isLastMessageARequest =
             messages.firstOrNull?.type == ChatMessageType.request;
-        return Row(
-          children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  controller: _controller,
-                  focusNode: _inputFieldFocusNode,
-                  onSubmitted:
-                      isLastMessageARequest ? null : (_) => _onSubmit(),
-                  textInputAction: TextInputAction.send,
+        return Card(
+          margin: const EdgeInsets.only(bottom: 8, left: 8, right: 8),
+          elevation: 16,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                const SizedBox(width: 16),
+                Expanded(
+                  child: _buildInputField(
+                    onSubmitted:
+                        isLastMessageARequest ? null : (_) => _onSubmit(),
+                  ),
                 ),
-              ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: isLastMessageARequest
+                      ? _buildLoadingSubmitButton()
+                      : IconButton(
+                          icon: const Icon(Icons.send),
+                          onPressed: _onSubmit,
+                        ),
+                ),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: isLastMessageARequest
-                  ? _buildLoadingSubmitButton()
-                  : IconButton(
-                      icon: const Icon(Icons.send),
-                      onPressed: _onSubmit,
-                    ),
-            ),
-          ],
+          ),
         );
       },
+    );
+  }
+
+  Widget _buildInputField({required ValueChanged<String>? onSubmitted}) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: TextField(
+        controller: _controller,
+        focusNode: _inputFieldFocusNode,
+        onSubmitted: onSubmitted,
+        textInputAction: TextInputAction.send,
+      ),
     );
   }
 

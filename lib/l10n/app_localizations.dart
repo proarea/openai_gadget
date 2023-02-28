@@ -7,6 +7,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations_en.dart';
+import 'app_localizations_uk.dart';
 
 /// Callers can lookup localized strings with an instance of AppLocalizations
 /// returned by `AppLocalizations.of(context)`.
@@ -89,8 +90,15 @@ abstract class AppLocalizations {
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
-    Locale('en')
+    Locale('en'),
+    Locale('uk')
   ];
+
+  /// No description provided for @langName.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get langName;
 
   /// No description provided for @appName.
   ///
@@ -104,17 +112,71 @@ abstract class AppLocalizations {
   /// **'Open Simple Chat'**
   String get labelGoToSimpleChat;
 
-  /// No description provided for @labelTextModelName.
+  /// No description provided for @labelGoToMotivationals.
   ///
   /// In en, this message translates to:
-  /// **'Text Model Name'**
-  String get labelTextModelName;
+  /// **'Open Motivationals'**
+  String get labelGoToMotivationals;
 
-  /// No description provided for @labelClearChatHistory.
+  /// No description provided for @labelSimpleChat.
+  ///
+  /// In en, this message translates to:
+  /// **'Simple Chat'**
+  String get labelSimpleChat;
+
+  /// No description provided for @labelMotivationals.
+  ///
+  /// In en, this message translates to:
+  /// **'Motivationals'**
+  String get labelMotivationals;
+
+  /// No description provided for @labelTextCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Copied!'**
+  String get labelTextCopied;
+
+  /// No description provided for @labelGenerate.
+  ///
+  /// In en, this message translates to:
+  /// **'Generate'**
+  String get labelGenerate;
+
+  /// No description provided for @tooltipLanguagePicker.
+  ///
+  /// In en, this message translates to:
+  /// **'🌐'**
+  String get tooltipLanguagePicker;
+
+  /// No description provided for @tooltipOpenAiTextModelPicker.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick OpenAI text model'**
+  String get tooltipOpenAiTextModelPicker;
+
+  /// No description provided for @tooltipClearChat.
   ///
   /// In en, this message translates to:
   /// **'Clear Chat History'**
-  String get labelClearChatHistory;
+  String get tooltipClearChat;
+
+  /// No description provided for @labelEmptyChat.
+  ///
+  /// In en, this message translates to:
+  /// **'Type in whatever you would like to ask'**
+  String get labelEmptyChat;
+
+  /// No description provided for @labelMotivationalTextError.
+  ///
+  /// In en, this message translates to:
+  /// **'Error occured!\nClick on the button below to generate motivational text!'**
+  String get labelMotivationalTextError;
+
+  /// No description provided for @labelMotivationalTextEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Click on the button below to generate motivational text!'**
+  String get labelMotivationalTextEmpty;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
@@ -126,7 +188,7 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['en'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['en', 'uk'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -138,6 +200,7 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
     case 'en': return AppLocalizationsEn();
+    case 'uk': return AppLocalizationsUk();
   }
 
   throw FlutterError(

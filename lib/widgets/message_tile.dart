@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import '../models/chat_message.dart';
+import 'copy_button.dart';
 
 class MessageTile extends StatelessWidget {
   final ChatMessage message;
@@ -41,23 +41,27 @@ class MessageTile extends StatelessWidget {
   }
 
   Widget _buildMessageBubble(BuildContext context) {
-    final alignmentToEnd = message.type == ChatMessageType.request;
+    final isUserMessage = message.type == ChatMessageType.request;
+    final messageMargin = isUserMessage
+        ? const EdgeInsets.only(left: 64)
+        : const EdgeInsets.only(right: 64);
+    const copyButtonPadding = EdgeInsets.only(right: 32);
 
     return Align(
-      alignment: alignmentToEnd ? Alignment.topRight : Alignment.topLeft,
+      alignment: isUserMessage ? Alignment.topRight : Alignment.topLeft,
       child: Container(
+        margin: messageMargin,
         padding: const EdgeInsets.all(4),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          color: Colors.blueGrey[200],
+          color: isUserMessage ? Colors.blue : Colors.blueGrey[200],
         ),
         child: Stack(
           children: [
             Container(
-              padding:
-                  const EdgeInsets.all(8) + const EdgeInsets.only(right: 32),
+              padding: const EdgeInsets.all(8) + copyButtonPadding,
               child: Column(
-                crossAxisAlignment: message.type == ChatMessageType.request
+                crossAxisAlignment: isUserMessage
                     ? CrossAxisAlignment.end
                     : CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
@@ -88,18 +92,9 @@ class MessageTile extends StatelessWidget {
   }
 
   Widget _buildCopyButton() {
-    return IconButton(
-      icon: const Icon(
-        Icons.copy,
-        size: 14,
-      ),
-      onPressed: () {
-        Clipboard.setData(
-          ClipboardData(
-            text: message.content,
-          ),
-        );
-      },
+    return CopyButton(
+      text: message.content,
+      size: 14,
     );
   }
 }

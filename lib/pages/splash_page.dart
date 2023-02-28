@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../l10n/l10n.dart';
 import '../widgets/constrained_area.dart';
+import '../widgets/default_app_bar.dart';
 import 'home_page.dart';
 
 class SplashPage extends StatefulWidget {
@@ -24,8 +25,8 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(context.localizations.appName),
+      appBar: DefaultAppBar(
+        title: context.localizations.appName,
       ),
       body: const ConstrainedArea(
         child: CircularProgressIndicator.adaptive(),

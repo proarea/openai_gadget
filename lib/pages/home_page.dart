@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../l10n/l10n.dart';
 import '../widgets/constrained_area.dart';
+import '../widgets/default_app_bar.dart';
 import 'chat_page.dart';
+import 'motivational_page.dart';
 
 class HomePage extends StatelessWidget {
   static PageRoute createRoute() {
@@ -14,8 +16,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(context.localizations.appName),
+      appBar: DefaultAppBar(
+        title: context.localizations.appName,
       ),
       body: ConstrainedArea(
         child: ListView(
@@ -23,7 +25,16 @@ class HomePage extends StatelessWidget {
             ListTile(
               title: Text(context.localizations.labelGoToSimpleChat),
               leading: const Icon(Icons.chat),
-              onTap: () => Navigator.of(context).push(ChatPage.createRoute()),
+              onTap: () => Navigator.of(context).push(
+                ChatPage.createRoute(),
+              ),
+            ),
+            ListTile(
+              title: Text(context.localizations.labelGoToMotivationals),
+              leading: const Icon(Icons.sentiment_very_satisfied_rounded),
+              onTap: () => Navigator.of(context).push(
+                MotivationalPage.createRoute(),
+              ),
             ),
           ],
         ),
