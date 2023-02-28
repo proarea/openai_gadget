@@ -32,10 +32,10 @@ class _MotivationalPageState extends State<MotivationalPage> {
   SettingsBloc get _settingsBloc => BlocProvider.of<SettingsBloc>(context);
   MotivationalBloc get _bloc => BlocProvider.of<MotivationalBloc>(context);
 
-  void _onGenerate() async {
-    final settings = _settingsBloc.state;
-    final localizations = await AppLocalizations.delegate.load(settings.locale);
-    _bloc.generate(settings.textModel, localizations.langName);
+  void _onGenerate() {
+    final appSettings = _settingsBloc.state;
+    final localizations = lookupAppLocalizations(appSettings.locale);
+    _bloc.generate(appSettings.textModel, localizations.langName);
   }
 
   @override

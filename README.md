@@ -11,20 +11,21 @@
 <br />
 Explore the potential of OpenAI models with our repository of examples showcasing use cases. Our examples highlight the diverse ways in which OpenAI models can be applied. Discover the limitations and benefits of these models and how they can be used to solve real-world problems.    
 
-Content:
+<br />
+
+<div align="center">
+    <img src="images/demo.gif" width="550px" />
+</div>
+
+<br />
+
+## Summary
 - [Getting started](#getting-started)
 - [Specification](#specification)
     - [Basics](#basics)
     - [Demo: Simple Chat](#demo-simple-chat)
     - [Demo: Motivationals](#demo-motivationals)
 
-<br />
-
-Demo:  
-
-<div align="center">
-    <img src="images/demo.gif" width="550px" />
-</div>
 
 ## Getting Started  
 
@@ -39,6 +40,9 @@ flutter pub run build_runner build
 ```  
 
 After that, run the project on any available platform 🎉  
+```console
+flutter run
+```  
 
 ## Specification
 
@@ -52,7 +56,7 @@ Project uses:
 
 ### Basics
 
-In addition to basic localiation feature, the application has an ability to change the OpenAI text model, that will be used across the app. 
+In addition to basic localization feature, the application has an ability to change the OpenAI text model, that will be used across the app. 
 
 <div align="center">
    <img src="images/basics.png" />
@@ -60,8 +64,8 @@ In addition to basic localiation feature, the application has an ability to chan
 
 ### Demo: Simple chat
 
-This page demostrates an ability to create a simple chat to interact with user. 
-It is possible to send a message and get a response from OpenAI bot. 
+This page demostrates an ability to create a simple chat to interact with user.  
+It is possible to send a message and get a response from OpenAI bot.  
 Application is not sending a full conversation to OpenAI, so that the text model is not aware of the context of the conversation.  
 
 <div align="center">
@@ -73,6 +77,7 @@ Application is not sending a full conversation to OpenAI, so that the text model
 
 This page demostrates an ability to create a unique motivational message for the user.  
 It is possible to generate motivational text and copy it to the clipboard.  
+Such messages might be used is a certain place on user dashboard in real applications.  
 
 
 <div align="center">
@@ -80,7 +85,7 @@ It is possible to generate motivational text and copy it to the clipboard.
    <img src="images/motivationals-2.png"  width="400px"/>
 </div>
 
-This demo is language-dependent, meaning that application is asking OpenAI text model to respond using the language that is currently used in application.
+This demo is language-dependent, meaning that application is asking OpenAI text model to respond using the language that is currently used in application.  
 
 <div align="center">
    <img src="images/motivationals-3.png"  width="400px"/>
