@@ -1,26 +1,27 @@
 import 'dart:ui';
 
-import 'open_ai_text_model.dart';
+import '../generated/openai_models.dart';
+import 'open_ai_model.dart';
 
 class AppSettings {
-  final OpenAiTextModel textModel;
+  final OpenAiModel openAiModel;
   final Locale locale;
 
   const AppSettings({
-    required this.textModel,
+    required this.openAiModel,
     required this.locale,
   });
 
   AppSettings.defaults(List<Locale> supportedLocales)
-      : textModel = OpenAiTextModel.davinci,
+      : openAiModel = GeneratedOpenAiModels.textModels.first,
         locale = supportedLocales.first;
 
   AppSettings copyWith({
-    OpenAiTextModel? textModel,
+    OpenAiModel? openAiModel,
     Locale? locale,
   }) {
     return AppSettings(
-      textModel: textModel ?? this.textModel,
+      openAiModel: openAiModel ?? this.openAiModel,
       locale: locale ?? this.locale,
     );
   }
@@ -29,9 +30,9 @@ class AppSettings {
   bool operator ==(covariant AppSettings other) {
     if (identical(this, other)) return true;
 
-    return other.textModel == textModel && other.locale == locale;
+    return other.openAiModel == openAiModel && other.locale == locale;
   }
 
   @override
-  int get hashCode => textModel.hashCode ^ locale.hashCode;
+  int get hashCode => openAiModel.hashCode ^ locale.hashCode;
 }

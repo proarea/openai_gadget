@@ -62,7 +62,7 @@ class _ChatPageState extends State<ChatPage> {
     setState(() {});
 
     final settings = _settingsBloc.state;
-    _bloc.postMessage(settings.textModel, text);
+    _bloc.postMessage(settings.openAiModel, text);
   }
 
   @override

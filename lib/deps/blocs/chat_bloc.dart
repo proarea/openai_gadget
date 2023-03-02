@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../models/chat_message.dart';
-import '../../models/open_ai_text_model.dart';
+import '../../models/open_ai_model.dart';
 import '../services/open_ai_service.dart';
 
 class ChatBloc extends Cubit<List<ChatMessage>> {
@@ -16,20 +16,20 @@ class ChatBloc extends Cubit<List<ChatMessage>> {
     emit([]);
   }
 
-  void postMessage(OpenAiTextModel textModel, String prompt) async {
+  void postMessage(OpenAiModel openAiModel, String prompt) async {
     final userMessage = ChatMessage.my(content: prompt);
     if (isClosed) return;
     emit([userMessage, ...state]);
 
-    final response = await _respond(textModel, prompt);
+    final response = await _respond(openAiModel, prompt);
     if (isClosed) return;
     emit([response, ...state]);
   }
 
-  Future<ChatMessage> _respond(OpenAiTextModel textModel, String prompt) async {
+  Future<ChatMessage> _respond(OpenAiModel openAiModel, String prompt) async {
     try {
       final response = await openAiService.askForCompletion(
-        textModel,
+        openAiModel,
         prompt,
       );
 

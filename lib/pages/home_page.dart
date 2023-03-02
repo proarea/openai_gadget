@@ -5,6 +5,7 @@ import '../widgets/constrained_area.dart';
 import '../widgets/default_app_bar.dart';
 import 'chat_page.dart';
 import 'motivational_page.dart';
+import 'settings_open_ai_model_page.dart';
 
 class HomePage extends StatelessWidget {
   static PageRoute createRoute() {
@@ -34,6 +35,13 @@ class HomePage extends StatelessWidget {
               leading: const Icon(Icons.sentiment_very_satisfied_rounded),
               onTap: () => Navigator.of(context).push(
                 MotivationalPage.createRoute(),
+              ),
+            ),
+            ListTile(
+              title: Text(context.localizations.tooltipOpenAiTextModelPicker),
+              leading: const Icon(Icons.settings),
+              onTap: () => Navigator.of(context).push(
+                SettingsOpenAiModelPage.createRoute(),
               ),
             ),
           ],

@@ -25,7 +25,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: DefaultAppBar(
+      appBar: DefaultAppBar.noActions(
         title: context.localizations.appName,
       ),
       body: const ConstrainedArea(

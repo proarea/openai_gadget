@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:openai_client/openai_client.dart';
 
-import '../../models/open_ai_text_model.dart';
+import '../../models/open_ai_model.dart';
 
 class OpenAiService {
   final OpenAIClient openAiClient;
@@ -12,11 +12,11 @@ class OpenAiService {
   });
 
   Future<String> askForCompletion(
-    OpenAiTextModel textModel,
+    OpenAiModel openAiModel,
     String prompt,
   ) async {
     final request = openAiClient.completions.create(
-      model: textModel.modelName,
+      model: openAiModel.model,
       prompt: prompt,
       maxTokens: 1000,
     );

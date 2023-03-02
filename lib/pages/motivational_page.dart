@@ -35,14 +35,14 @@ class _MotivationalPageState extends State<MotivationalPage> {
   void _onGenerate() {
     final appSettings = _settingsBloc.state;
     final localizations = lookupAppLocalizations(appSettings.locale);
-    _bloc.generate(appSettings.textModel, localizations.langName);
+    _bloc.generate(appSettings.openAiModel, localizations.langName);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: DefaultAppBar(
-        title: context.localizations.labelSimpleChat,
+        title: context.localizations.labelMotivationals,
       ),
       body: ConstrainedArea(
         child: Column(

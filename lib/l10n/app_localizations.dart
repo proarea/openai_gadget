@@ -109,13 +109,13 @@ abstract class AppLocalizations {
   /// No description provided for @labelGoToSimpleChat.
   ///
   /// In en, this message translates to:
-  /// **'Open Simple Chat'**
+  /// **'Text Completions: Simple Chat'**
   String get labelGoToSimpleChat;
 
   /// No description provided for @labelGoToMotivationals.
   ///
   /// In en, this message translates to:
-  /// **'Open Motivationals'**
+  /// **'Text Completions: Motivational message generator'**
   String get labelGoToMotivationals;
 
   /// No description provided for @labelSimpleChat.
@@ -177,6 +177,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Click on the button below to generate motivational text!'**
   String get labelMotivationalTextEmpty;
+
+  /// No description provided for @labelSelected.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected'**
+  String get labelSelected;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

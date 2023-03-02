@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../l10n/app_localizations.dart';
 import '../../models/app_settings.dart';
-import '../../models/open_ai_text_model.dart';
+import '../../models/open_ai_model.dart';
 
 class SettingsBloc extends Cubit<AppSettings> {
   SettingsBloc()
@@ -12,9 +12,9 @@ class SettingsBloc extends Cubit<AppSettings> {
           AppSettings.defaults(AppLocalizations.supportedLocales),
         );
 
-  void set({OpenAiTextModel? textModel, Locale? locale}) {
+  void set({OpenAiModel? openAiModel, Locale? locale}) {
     final newState = state.copyWith(
-      textModel: textModel,
+      openAiModel: openAiModel,
       locale: locale,
     );
     if (state == newState) return;

@@ -1,8 +1,8 @@
 {
     "langName": "English",
     "appName": "OpenAI Gadget",
-    "labelGoToSimpleChat": "Open Simple Chat",
-    "labelGoToMotivationals": "Open Motivationals",
+    "labelGoToSimpleChat": "Text Completions: Simple Chat",
+    "labelGoToMotivationals": "Text Completions: Motivational message generator",
     "labelSimpleChat": "Simple Chat",
     "labelMotivationals": "Motivationals",
     "labelTextCopied": "Copied!",
@@ -12,5 +12,6 @@
     "tooltipClearChat": "Clear Chat History",
     "labelEmptyChat": "Type in whatever you would like to ask",
     "labelMotivationalTextError": "Error occured!\nClick on the button below to generate motivational text!",
-    "labelMotivationalTextEmpty": "Click on the button below to generate motivational text!"
+    "labelMotivationalTextEmpty": "Click on the button below to generate motivational text!",
+    "labelSelected": "Selected"
 }

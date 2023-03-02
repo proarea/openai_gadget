@@ -1,8 +1,8 @@
 {
     "langName": "Українська",
     "appName": "OpenAI Gadget",
-    "labelGoToSimpleChat": "Відкрити чат",
-    "labelGoToMotivationals": "Відкрити Мотивації",
+    "labelGoToSimpleChat": "Text Completions: Спрощений чат",
+    "labelGoToMotivationals": "Text Completions: Генератор Мотиваційних Повідомлень",
     "labelSimpleChat": "Чат",
     "labelMotivationals": "Мотивація",
     "labelTextCopied": "Скопійовано!",
@@ -12,5 +12,6 @@
     "tooltipClearChat": "Очистити історію чату",
     "labelEmptyChat": "Введіть ваш запит у поле знизу",
     "labelMotivationalTextError": "Виникла помилка!\nНатисніть на кнопку знизу щоб згенерувати мотиваційний текст!",
-    "labelMotivationalTextEmpty": "Натисніть на кнопку знизу щоб згенерувати мотиваційний текст!"
+    "labelMotivationalTextEmpty": "Натисніть на кнопку знизу щоб згенерувати мотиваційний текст!",
+    "labelSelected": "Обрано"
 }

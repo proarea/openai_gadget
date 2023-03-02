@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../models/open_ai_text_model.dart';
+import '../../models/open_ai_model.dart';
 import '../services/open_ai_service.dart';
 
 class MotivationalBloc extends Cubit<MotivationalBlocState> {
@@ -11,11 +11,11 @@ class MotivationalBloc extends Cubit<MotivationalBlocState> {
     required this.openAiService,
   }) : super(const MotivationalBlocState.initial());
 
-  void generate(OpenAiTextModel textModel, String languageName) async {
+  void generate(OpenAiModel openAiModel, String languageName) async {
     emit(state.copyWithGenerating());
     try {
       final response = await openAiService.askForCompletion(
-        textModel,
+        openAiModel,
         "Generate motivational affirmation for the day (respond using language: $languageName)",
       );
 

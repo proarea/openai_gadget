@@ -13,10 +13,10 @@ class AppLocalizationsUk extends AppLocalizations {
   String get appName => 'OpenAI Gadget';
 
   @override
-  String get labelGoToSimpleChat => 'Відкрити чат';
+  String get labelGoToSimpleChat => 'Text Completions: Спрощений чат';
 
   @override
-  String get labelGoToMotivationals => 'Відкрити Мотивації';
+  String get labelGoToMotivationals => 'Text Completions: Генератор Мотиваційних Повідомлень';
 
   @override
   String get labelSimpleChat => 'Чат';
@@ -47,4 +47,7 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get labelMotivationalTextEmpty => 'Натисніть на кнопку знизу щоб згенерувати мотиваційний текст!';
+
+  @override
+  String get labelSelected => 'Обрано';
 }
